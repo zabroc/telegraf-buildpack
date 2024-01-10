@@ -9,15 +9,7 @@ echo "-----> Install JQ binaries for $CF_STACK"
 
 VERSION="1.6"
 URL="https://github.com/stedolan/jq/releases/download/jq-${VERSION}/jq-linux64"
-
-
-if [ $CF_STACK == "cflinuxfs3" ]; then
-    SHA256="af986793a515d500ab2d35f8d2aecd656e764504b789b66d7e1a0b727a124c44"
-else
-  echo "       **ERROR** Unsupported stack"
-  echo "                 See https://docs.cloudfoundry.org/devguide/deploy-apps/stacks.html for more info"
-  exit 1
-fi
+SHA256="af986793a515d500ab2d35f8d2aecd656e764504b789b66d7e1a0b727a124c44"
 
 DepDir="$DEPS_DIR/$DEPS_IDX"
 InstallDir="$DepDir/jq"
