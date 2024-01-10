@@ -9,14 +9,7 @@ echo "-----> Install $SIDECAR_NAME binaries"
 
 VERSION="1.27.2"
 URL="https://dl.influxdata.com/telegraf/releases/telegraf-${VERSION}_linux_amd64.tar.gz"
-
-if [ $CF_STACK == "cflinuxfs3" ]; then
-    SHA256="2a051e5113898cea52c6bbb4835fd73bf835c5a5976dd7901108ea68adae2749"
-else
-  echo "       **ERROR** Unsupported stack"
-  echo "                 See https://docs.cloudfoundry.org/devguide/deploy-apps/stacks.html for more info"
-  exit 1
-fi
+SHA256="2a051e5113898cea52c6bbb4835fd73bf835c5a5976dd7901108ea68adae2749"
 
 DepDir="$DEPS_DIR/$DEPS_IDX"
 InstallDir="$DepDir/telegraf"
