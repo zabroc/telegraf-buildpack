@@ -5,10 +5,11 @@ set -euo pipefail
 DEPS_DIR=$1
 DEPS_IDX=$2
 
-echo "-----> Install JQ binaries"
+echo "-----> Install JQ binaries for $CF_STACK"
 
 VERSION="1.6"
 URL="https://github.com/stedolan/jq/releases/download/jq-${VERSION}/jq-linux64"
+
 
 if [ $CF_STACK == "cflinuxfs3" ]; then
     SHA256="af986793a515d500ab2d35f8d2aecd656e764504b789b66d7e1a0b727a124c44"
