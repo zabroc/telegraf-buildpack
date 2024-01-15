@@ -56,4 +56,4 @@ sed -i 's|metrics_basic_auth_username|'$METRICS_BASIC_AUTH_USERNAME'|' $TELEGRAF
 sed -i 's|metrics_basic_auth_password|'$METRICS_BASIC_AUTH_PASSWORD'|' $TELEGRAF_CONF_FILE
 
 sed -i 's|rabbitmq_user|'$RABBITMQ_USER'|' $TELEGRAF_CONF_FILE
-sed -i 's|rabbitmq_password|'RABBITMQ_PASSWORD'|' $TELEGRAF_CONF_FILE
+sed -i 's|rabbitmq_password|'$RABBITMQ_PASSWORD'|' $TELEGRAF_CONF_FILE
