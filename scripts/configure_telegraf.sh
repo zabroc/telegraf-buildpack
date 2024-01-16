@@ -57,6 +57,7 @@ sed -i 's|metrics_basic_auth_password|'$METRICS_BASIC_AUTH_PASSWORD'|' $TELEGRAF
 
 sed -i 's|rabbitmq_user|'$RABBITMQ_USER'|' $TELEGRAF_CONF_FILE
 sed -i 's|rabbitmq_password|'$RABBITMQ_PASSWORD'|' $TELEGRAF_CONF_FILE
-sed -i 's|mysql_user|MYSQL_USER|' $TELEGRAF_CONF_FILE
-sed -i 's|mysql_password|MYSQL_PASSWORD|' $TELEGRAF_CONF_FILE
-sed -i 's|mysql_host|MYSQL_HOST|' $TELEGRAF_CONF_FILE
+sed -i 's|rabbitmq_host|'$RABBITMQ_HOST'|' $TELEGRAF_CONF_FILE
+sed -i 's|mysql_user|'$MYSQL_USER'|' $TELEGRAF_CONF_FILE
+sed -i 's|mysql_password|'$MYSQL_PASSWORD'|' $TELEGRAF_CONF_FILE
+sed -i 's|mysql_host|'$MYSQL_HOST'|' $TELEGRAF_CONF_FILE
