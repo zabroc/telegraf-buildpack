@@ -61,3 +61,5 @@ sed -i 's|rabbitmq_host|'$RABBITMQ_HOST'|' $TELEGRAF_CONF_FILE
 sed -i 's|mysql_user|'$MYSQL_USER'|' $TELEGRAF_CONF_FILE
 sed -i 's|mysql_password|'$MYSQL_PASSWORD'|' $TELEGRAF_CONF_FILE
 sed -i 's|mysql_host|'$MYSQL_HOST'|' $TELEGRAF_CONF_FILE
+sed -i 's|redis_password|'$REDIS_PASWORD'|' $TELEGRAF_CONF_FILE
+sed -i 's|redis_host|'$REDIS_HOST'|' $TELEGRAF_CONF_FILE
