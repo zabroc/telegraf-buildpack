@@ -7,7 +7,7 @@ DEPS_IDX=$2
 
 echo "-----> Configuring $SIDECAR_NAME Sidecar"
 
-TELEGRAF_CONF_FILE=$HOME_DIR/app/configs/telegraf.conf
+TELEGRAF_CONF_FILE=/home/vcap/app/configs/telegraf.conf
 
 getOrganizationName()
 {
