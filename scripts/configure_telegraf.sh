@@ -55,7 +55,7 @@ sed -i 's|prom_remote_write_passwd|'$PROM_REMOTE_WRITE_PASSWD'|' $TELEGRAF_CONF_
 sed -i 's|metrics_basic_auth_username|'$METRICS_BASIC_AUTH_USERNAME'|' $TELEGRAF_CONF_FILE
 sed -i 's|metrics_basic_auth_password|'$METRICS_BASIC_AUTH_PASSWORD'|' $TELEGRAF_CONF_FILE
 
-RABBITMQ_USER=$(echo $VCAP_SERVICES | jq -r '.["appcloud-rabbitmq310"][0].credentials.protocols.username')
+RABBITMQ_USER=$(echo $VCAP_SERVICES | jq -r '.["appcloud-rabbitmq310"][0].credentials.username')
 RABBITMQ_PASSWORD=$(echo $VCAP_SERVICES | jq -r '.["appcloud-rabbitmq310"][0].credentials.password')
 RABBITMQ_HOST=$(echo $VCAP_SERVICES | jq -r '.["appcloud-rabbitmq310"][0].credentials.host')
 sed -i 's|rabbitmq_user|'$RABBITMQ_USER'|' $TELEGRAF_CONF_FILE
