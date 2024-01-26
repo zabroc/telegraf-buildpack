@@ -54,3 +54,24 @@ sed -i 's|prom_remote_write_user|'$PROM_REMOTE_WRITE_USER'|' $TELEGRAF_CONF_FILE
 sed -i 's|prom_remote_write_passwd|'$PROM_REMOTE_WRITE_PASSWD'|' $TELEGRAF_CONF_FILE
 sed -i 's|metrics_basic_auth_username|'$METRICS_BASIC_AUTH_USERNAME'|' $TELEGRAF_CONF_FILE
 sed -i 's|metrics_basic_auth_password|'$METRICS_BASIC_AUTH_PASSWORD'|' $TELEGRAF_CONF_FILE
+
+RABBITMQ_USER=$(echo $VCAP_SERVICES | jq -r '.["appcloud-rabbitmq310"][0].credentials.username')
+RABBITMQ_PASSWORD=$(echo $VCAP_SERVICES | jq -r '.["appcloud-rabbitmq310"][0].credentials.password')
+RABBITMQ_HOST=$(echo $VCAP_SERVICES | jq -r '.["appcloud-rabbitmq310"][0].credentials.host')
+sed -i 's|rabbitmq_user|'$RABBITMQ_USER'|' $TELEGRAF_CONF_FILE
+sed -i 's|rabbitmq_password|'$RABBITMQ_PASSWORD'|' $TELEGRAF_CONF_FILE
+sed -i 's|rabbitmq_host|'$RABBITMQ_HOST'|' $TELEGRAF_CONF_FILE
+
+MYSQL_USER=$(echo $VCAP_SERVICES | jq -r '.["appcloud-mariadb106"][0].credentials.username')
+MYSQL_PASSWORD=$(echo $VCAP_SERVICES | jq -r '.["appcloud-mariadb106"][0].credentials.password')
+MYSQL_HOST=$(echo $VCAP_SERVICES | jq -r '.["appcloud-mariadb106"][0].credentials.host')
+MYSQL_NAME=$(echo $VCAP_SERVICES | jq -r '.["appcloud-mariadb106"][0].credentials.name')
+sed -i 's|mysql_user|'$MYSQL_USER'|' $TELEGRAF_CONF_FILE
+sed -i 's|mysql_password|'$MYSQL_PASSWORD'|' $TELEGRAF_CONF_FILE
+sed -i 's|mysql_host|'$MYSQL_HOST'|' $TELEGRAF_CONF_FILE
+sed -i 's|mysql_name|'$MYSQL_NAME'|' $TELEGRAF_CONF_FILE
+
+REDIS_PASSWORD=$(echo $VCAP_SERVICES | jq -r '.["appcloud-redis60"][0].credentials.password')
+REDIS_HOST=$(echo $VCAP_SERVICES | jq -r '.["appcloud-redis60"][0].credentials.host')
+sed -i 's|redis_password|'$REDIS_PASSWORD'|' $TELEGRAF_CONF_FILE
+sed -i 's|redis_host|'$REDIS_HOST'|' $TELEGRAF_CONF_FILE
