@@ -56,7 +56,7 @@ sed -i 's|prom_remote_write_passwd|'$PROM_REMOTE_WRITE_PASSWD'|' $TELEGRAF_CONF_
 sed -i 's|metrics_basic_auth_username|'$METRICS_BASIC_AUTH_USERNAME'|' $TELEGRAF_CONF_FILE
 sed -i 's|metrics_basic_auth_password|'$METRICS_BASIC_AUTH_PASSWORD'|' $TELEGRAF_CONF_FILE
 
-if [$SERVICE_METRICS_ENABLED == "true"]; then
+if [ $SERVICE_METRICS_ENABLED == "true" ]; then
   ##Enable RabbitMQ Input Plugin
   sed -i 's|##\[\[inputs.rabbitmq\]\]|\[\[inputs.rabbitmq\]\]|' $TELEGRAF_CONF_FILE
   sed -i 's|##url|url|' $TELEGRAF_CONF_FILE
