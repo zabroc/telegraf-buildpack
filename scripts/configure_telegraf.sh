@@ -67,7 +67,7 @@ if [ $SERVICE_METRICS_ENABLED == "true" ]; then
   sed -i 's|##url|url|' $TELEGRAF_CONF_FILE
   sed -i 's|##username|username|' $TELEGRAF_CONF_FILE
   sed -i 's|##password|password|' $TELEGRAF_CONF_FILE
-  sed -i 's|##metric_exclude = \[\]|metric_exclude = \[\"federation\", \"nodes\"\]|' $TELEGRAF_CONF_FILE
+  sed -i 's|##metric_exclude = \[\]|metric_exclude = \[\"federation\", \"node\"\]|' $TELEGRAF_CONF_FILE
 
   ## Enable Mysql Input Plugin
   sed -i 's|##\[\[inputs.mysql\]\]|\[\[inputs.mysql\]\]|' $TELEGRAF_CONF_FILE
