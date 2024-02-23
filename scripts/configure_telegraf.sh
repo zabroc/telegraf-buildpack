@@ -59,7 +59,7 @@ sed -i 's|metrics_basic_auth_password|'$METRICS_BASIC_AUTH_PASSWORD'|' $TELEGRAF
 if [ $SERVICE_METRICS_ENABLED == "true" ]; then
   ##Enable Redis Input Plugin
   sed -i 's|##\[\[inputs.redis\]\]|\[\[inputs.redis\]\]|' $TELEGRAF_CONF_FILE
-  sed -i 's|##servers = \[\"tcp:\/\/redis_password@redis_host:6379\"\]|servers = \[\"tcp:\/\/redis_password@redis_host:6379\"\]|' $TELEGRAF_CONF_FILE
+  sed -i 's|##servers = \[\"tcp:\/\/:redis_password@redis_host:6379\"\]|servers = \[\"tcp:\/\/:redis_password@redis_host:6379\"\]|' $TELEGRAF_CONF_FILE
   sed -i 's|##insecure_skip_verify = true|insecure_skip_verify = true|' $TELEGRAF_CONF_FILE
 
   ##Enable RabbitMQ Input Plugin
