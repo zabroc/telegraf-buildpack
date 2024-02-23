@@ -57,6 +57,11 @@ sed -i 's|metrics_basic_auth_username|'$METRICS_BASIC_AUTH_USERNAME'|' $TELEGRAF
 sed -i 's|metrics_basic_auth_password|'$METRICS_BASIC_AUTH_PASSWORD'|' $TELEGRAF_CONF_FILE
 
 if [ $SERVICE_METRICS_ENABLED == "true" ]; then
+  ##Enable Redis Input Plugin
+  sed -i 's|##\[\[inputs.redis\]\]|\[\[inputs.redis\]\]|' $TELEGRAF_CONF_FILE
+  sed -i 's|##servers = \[\"tcp:\/\/redis_password@redis_host:6379\"\]|servers = \[\"tcp:\/\/redis_password@redis_host:6379\"\]|' $TELEGRAF_CONF_FILE
+  sed -i 's|##insecure_skip_verify = true|insecure_skip_verify = true|' $TELEGRAF_CONF_FILE
+
   ##Enable RabbitMQ Input Plugin
   sed -i 's|##\[\[inputs.rabbitmq\]\]|\[\[inputs.rabbitmq\]\]|' $TELEGRAF_CONF_FILE
   sed -i 's|##url|url|' $TELEGRAF_CONF_FILE
@@ -67,11 +72,6 @@ if [ $SERVICE_METRICS_ENABLED == "true" ]; then
   sed -i 's|##\[\[inputs.mysql\]\]|\[\[inputs.mysql\]\]|' $TELEGRAF_CONF_FILE
   sed -i 's|##servers = \[\"mysql_user:mysql_password@tcp(mysql_host:3306)/mysql_name\"\]|servers = \[\"mysql_user:mysql_password@tcp(mysql_host:3306)/mysql_name\"\]|' $TELEGRAF_CONF_FILE
   sed -i 's|##metric_version|metric_version|' $TELEGRAF_CONF_FILE
-
-  ##Enable Redis Input Plugin
-  sed -i 's|##\[\[inputs.redis\]\]|\[\[inputs.redis\]\]|' $TELEGRAF_CONF_FILE
-  sed -i 's|##servers = \[\"tcp:\/\/redis_password@redis_host:6379\"\]|servers = \[\"tcp:\/\/redis_password@redis_host:6379\"\]|' $TELEGRAF_CONF_FILE
-  sed -i 's|##insecure_skip_verify = true|insecure_skip_verify = true|' $TELEGRAF_CONF_FILE
   fi
 
 RABBITMQ_USER=$(echo $VCAP_SERVICES | jq -r '.["appcloud-rabbitmq310"][0].credentials.username')
