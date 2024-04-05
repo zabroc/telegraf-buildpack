@@ -46,15 +46,11 @@ sed -i 's|stackit_application_name|'$APPLICATION_NAME'|' $TELEGRAF_CONF_FILE
 PROM_REMOTE_WRITE_URL=$(echo $TELEGRAF_CONFIG | jq -r '.prom_remote_write_url')
 PROM_REMOTE_WRITE_USER=$(echo $TELEGRAF_CONFIG | jq -r '.prom_remote_write_user')
 PROM_REMOTE_WRITE_PASSWD=$(echo $TELEGRAF_CONFIG | jq -r '.prom_remote_write_passwd')
-METRICS_BASIC_AUTH_USERNAME=$(echo $TELEGRAF_CONFIG | jq -r '.metrics_basic_auth_username')
-METRICS_BASIC_AUTH_PASSWORD=$(echo $TELEGRAF_CONFIG | jq -r '.metrics_basic_auth_password')
 SERVICE_METRICS_ENABLED=$(echo $TELEGRAF_CONFIG | jq -r '.service_metrics_enabled')
 
 sed -i 's|prom_remote_write_url|'$PROM_REMOTE_WRITE_URL'|' $TELEGRAF_CONF_FILE
 sed -i 's|prom_remote_write_user|'$PROM_REMOTE_WRITE_USER'|' $TELEGRAF_CONF_FILE
 sed -i 's|prom_remote_write_passwd|'$PROM_REMOTE_WRITE_PASSWD'|' $TELEGRAF_CONF_FILE
-sed -i 's|metrics_basic_auth_username|'$METRICS_BASIC_AUTH_USERNAME'|' $TELEGRAF_CONF_FILE
-sed -i 's|metrics_basic_auth_password|'$METRICS_BASIC_AUTH_PASSWORD'|' $TELEGRAF_CONF_FILE
 
 if [ $SERVICE_METRICS_ENABLED == "true" ]; then
   ##Enable Redis Input Plugin
