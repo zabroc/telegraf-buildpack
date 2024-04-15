@@ -7,9 +7,9 @@ DEPS_IDX=$2
 
 echo "-----> Install $SIDECAR_NAME binaries"
 
-VERSION="1.27.2"
+VERSION="1.30.1"
 URL="https://dl.influxdata.com/telegraf/releases/telegraf-${VERSION}_linux_amd64.tar.gz"
-SHA256="2a051e5113898cea52c6bbb4835fd73bf835c5a5976dd7901108ea68adae2749"
+SHA256="407fa5473617fca08eff2d2cad41698816761e3c653dbb3c05e80f75a0a814f6"
 
 DepDir="$DEPS_DIR/$DEPS_IDX"
 InstallDir="$DepDir/telegraf"
