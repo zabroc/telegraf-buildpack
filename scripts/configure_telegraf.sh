@@ -2,6 +2,9 @@
 
 set -euo pipefail
 
+# Set the maximum number of open file descriptors to 65536
+ulimit -n 65536
+
 DEPS_DIR=$1
 DEPS_IDX=$2
 
