@@ -78,12 +78,14 @@ sed -i 's|mariadb_host|'$MARIADB_HOST'|' $TELEGRAF_CONF_FILE
 sed -i 's|mariadb_name|'$MARIADB_NAME'|' $TELEGRAF_CONF_FILE
 
 
-REDIS_PASSWORD=$(echo $VCAP_SERVICES | jq -r '.["appcloud-redis7"][0].credentials.password')
-REDIS_HOST=$(echo $VCAP_SERVICES | jq -r '.["appcloud-redis60"][0].credentials.host')
+REDIS_HOST=$(echo $VCAP_SERVICES | jq -r '.["appcloud-redis7"][0].credentials.host')
+REDIS_USER=$(echo $VCAP_SERVICES | jq -r '.["appcloud-redis7"][0].credentials.redis.user')
+REDIS_PASSWORD=$(echo $VCAP_SERVICES | jq -r '.["appcloud-redis7"][0].credentials.redis.password')
 
 echo ":::::::::::: Redis ::::::::::::::::::::::::::::::::::"
-echo "REDIS_PASSWORD: $REDIS_PASSWORD"
 echo "REDIS_HOST: $REDIS_HOST"
+echo "REDIS_USER: $REDIS_USER"
+echo "REDIS_PASSWORD: $REDIS_PASSWORD"
 echo ":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
 echo ""
 echo ""
@@ -92,7 +94,7 @@ sed -i 's|redis_password|'$REDIS_PASSWORD'|' $TELEGRAF_CONF_FILE
 sed -i 's|redis_host|'$REDIS_HOST'|' $TELEGRAF_CONF_FILE
 
 echo ":::::::::::: Telegraf Config ::::::::::::::::::::::::::::::::::"
-echo echo $TELEGRAF_CONF_FILE
+echo cat $TELEGRAF_CONF_FILE
 echo ":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
 echo ""
 echo ""
