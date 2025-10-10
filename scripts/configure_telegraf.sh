@@ -87,12 +87,16 @@ echo ":::::::::::: Redis ::::::::::::::::::::::::::::::::::"
 echo "REDIS_HOST: $REDIS_HOST"
 echo "REDIS_USER: $REDIS_USER"
 echo "REDIS_PASSWORD: $REDIS_PASSWORD"
+echo "REDIS_CACRT: $REDIS_CACRT"
+echo ":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
+echo ""
+echo ""
 echo ":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
 echo ""
 echo ""
 
 # copy REDIS_CACRT to /etc/telegraf
-#echo "$REDIS_CACRT" > /tmp/ca.pem
+echo "$REDIS_CACRT" > /tmp/ca.pem
 
 sed -i 's|redis_host|'$REDIS_HOST'|' $TELEGRAF_CONF_FILE
 sed -i 's|redis_user|'$REDIS_HOST'|' $TELEGRAF_CONF_FILE
