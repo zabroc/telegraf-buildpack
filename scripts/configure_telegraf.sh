@@ -91,13 +91,12 @@ echo "REDIS_CACRT: $REDIS_CACRT"
 echo ":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
 echo ""
 echo ""
-echo ":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
-echo ""
-echo ""
 
 # copy REDIS_CACRT to /etc/telegraf
 echo ":::::::::::: Write Redis cert ::::::::::::::::::::::::::::::::::"
-echo "$REDIS_CACRT" > /tmp/ca.pem
+echo ""
+echo ""
+echo $(echo $VCAP_SERVICES | jq -r '.["appcloud-redis7"][0].credentials.cacrt') > /tmp/ca.pem
 
 sed -i 's|redis_host|'$REDIS_HOST'|' $TELEGRAF_CONF_FILE
 sed -i 's|redis_user|'$REDIS_HOST'|' $TELEGRAF_CONF_FILE
