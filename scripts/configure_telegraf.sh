@@ -81,6 +81,7 @@ sed -i 's|mariadb_name|'$MARIADB_NAME'|' $TELEGRAF_CONF_FILE
 REDIS_HOST=$(echo $VCAP_SERVICES | jq -r '.["appcloud-redis7"][0].credentials.host')
 REDIS_USER=$(echo $VCAP_SERVICES | jq -r '.["appcloud-redis7"][0].credentials.redis.username')
 REDIS_PASSWORD=$(echo $VCAP_SERVICES | jq -r '.["appcloud-redis7"][0].credentials.redis.password')
+REDIS_CACRT=$(echo $VCAP_SERVICES | jq -r '.["appcloud-redis7"][0].credentials.cacrt')
 
 echo ":::::::::::: Redis ::::::::::::::::::::::::::::::::::"
 echo "REDIS_HOST: $REDIS_HOST"
@@ -90,9 +91,14 @@ echo ":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
 echo ""
 echo ""
 
+# copy REDIS_CACRT to /etc/telegraf
+echo "$REDIS_CACRT" > /tmp/ca.pem
+
 sed -i 's|redis_host|'$REDIS_HOST'|' $TELEGRAF_CONF_FILE
 sed -i 's|redis_user|'$REDIS_HOST'|' $TELEGRAF_CONF_FILE
 sed -i 's|redis_password|'$REDIS_PASSWORD'|' $TELEGRAF_CONF_FILE
+
+
 
 
 echo ":::::::::::: Telegraf Config ::::::::::::::::::::::::::::::::::"
