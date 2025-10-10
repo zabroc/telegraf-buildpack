@@ -92,7 +92,7 @@ echo ""
 echo ""
 
 # copy REDIS_CACRT to /etc/telegraf
-echo "$REDIS_CACRT" > /tmp/ca.pem
+#echo "$REDIS_CACRT" > /tmp/ca.pem
 
 sed -i 's|redis_host|'$REDIS_HOST'|' $TELEGRAF_CONF_FILE
 sed -i 's|redis_user|'$REDIS_HOST'|' $TELEGRAF_CONF_FILE
