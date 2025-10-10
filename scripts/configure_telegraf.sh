@@ -96,6 +96,7 @@ echo ""
 echo ""
 
 # copy REDIS_CACRT to /etc/telegraf
+echo ":::::::::::: Write Redis cert ::::::::::::::::::::::::::::::::::"
 echo "$REDIS_CACRT" > /tmp/ca.pem
 
 sed -i 's|redis_host|'$REDIS_HOST'|' $TELEGRAF_CONF_FILE
