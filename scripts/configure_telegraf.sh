@@ -63,7 +63,7 @@ MARIADB_PASSWORD=$(echo $VCAP_SERVICES | jq -r '.["appcloud-mariadb106"][0].cred
 MARIADB_NAME=$(echo $VCAP_SERVICES | jq -r '.["appcloud-mariadb106"][0].credentials.name')
 
 echo ":::::::::::: MariaDB ::::::::::::::::::::::::::::::::::"
-echo "MARIADB_HOST: $MARIADB_HOST"
+echo "MARIADB_HOST (FIRST NODE): $MARIADB_HOST"
 echo "MARIADB_USER: $MARIADB_USER"
 echo "MARIADB_PASSWORD: $MARIADB_PASSWORD"
 echo "MARIADB_NAME: $MARIADB_NAME"
