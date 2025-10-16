@@ -57,7 +57,7 @@ sed -i 's|rabbitmq_user|'$RABBITMQ_USER'|' $TELEGRAF_CONF_FILE
 sed -i 's|rabbitmq_password|'$RABBITMQ_PASSWORD'|' $TELEGRAF_CONF_FILE
 sed -i 's|rabbitmq_host|'$RABBITMQ_HOST'|' $TELEGRAF_CONF_FILE
 
-MARIADB_HOST=$(echo $VCAP_SERVICES | jq -r '.["appcloud-mariadb106"][0].credentials.host')
+MARIADB_HOST=$(echo $VCAP_SERVICES | jq -r '.["appcloud-mariadb106"][0].credentials.hosts[0]')
 MARIADB_USER=$(echo $VCAP_SERVICES | jq -r '.["appcloud-mariadb106"][0].credentials.username')
 MARIADB_PASSWORD=$(echo $VCAP_SERVICES | jq -r '.["appcloud-mariadb106"][0].credentials.password')
 MARIADB_NAME=$(echo $VCAP_SERVICES | jq -r '.["appcloud-mariadb106"][0].credentials.name')
