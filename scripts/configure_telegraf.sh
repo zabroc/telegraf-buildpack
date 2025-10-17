@@ -78,13 +78,13 @@ sed -i 's|mariadb_host|'$MARIADB_HOST'|' $TELEGRAF_CONF_FILE
 sed -i 's|mariadb_name|'$MARIADB_NAME'|' $TELEGRAF_CONF_FILE
 
 
-REDIS_HOST=$(echo $VCAP_SERVICES | jq -r '.["appcloud-redis7"][0].credentials.host')
+REDIS_HOST=$(echo $VCAP_SERVICES | jq -r '.["appcloud-redis7"][0].credentials.hosts[0]')
 REDIS_USER=$(echo $VCAP_SERVICES | jq -r '.["appcloud-redis7"][0].credentials.redis.username')
 REDIS_PASSWORD=$(echo $VCAP_SERVICES | jq -r '.["appcloud-redis7"][0].credentials.redis.password')
 REDIS_CACRT=$(echo $VCAP_SERVICES | jq -r '.["appcloud-redis7"][0].credentials.cacrt')
 
 echo ":::::::::::: Redis ::::::::::::::::::::::::::::::::::"
-echo "REDIS_HOST: $REDIS_HOST"
+echo "REDIS_HOST (FIRST NODE): $REDIS_HOST"
 echo "REDIS_USER: $REDIS_USER"
 echo "REDIS_PASSWORD: $REDIS_PASSWORD"
 echo "REDIS_CACRT: $REDIS_CACRT"
