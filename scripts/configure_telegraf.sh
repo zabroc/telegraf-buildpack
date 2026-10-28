@@ -90,8 +90,10 @@ sed -i 's|mysql_host|'$MYSQL_HOST'|' $TELEGRAF_CONF_FILE
 sed -i 's|mysql_name|'$MYSQL_NAME'|' $TELEGRAF_CONF_FILE
 
 REDIS_PASSWORD=$(echo $VCAP_SERVICES | jq -r '[to_entries[] | select(.key | startswith("appcloud-keyvalue")) | .value[]][0].credentials.valkey.password')
+REDIS_USERNAME=$(echo $VCAP_SERVICES | jq -r '[to_entries[] | select(.key | startswith("appcloud-keyvalue")) | .value[]][0].credentials.valkey.username')
 REDIS_HOST=$(echo $VCAP_SERVICES | jq -r '[to_entries[] | select(.key | startswith("appcloud-keyvalue")) | .value[]][0].credentials.host')
 sed -i 's|redis_password|'$REDIS_PASSWORD'|' $TELEGRAF_CONF_FILE
+sed -i 's|redis_username|'$REDIS_USERNAME'|' $TELEGRAF_CONF_FILE
 sed -i 's|redis_host|'$REDIS_HOST'|' $TELEGRAF_CONF_FILE
 
 echo "-----> Sidecar configuration complete"
