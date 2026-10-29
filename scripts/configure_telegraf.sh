@@ -73,12 +73,13 @@ sed -i 's|##\[\[inputs.mysql\]\]|\[\[inputs.mysql\]\]|' $TELEGRAF_CONF_FILE
 sed -i 's|##servers = \[\"mysql_user:mysql_password@tcp(mysql_host:3306)/mysql_name\"\]|servers = \[\"mysql_user:mysql_password@tcp(mysql_host:3306)/mysql_name\"\]|' $TELEGRAF_CONF_FILE
 sed -i 's|##metric_version|metric_version|' $TELEGRAF_CONF_FILE
 
-RABBITMQ_USER=$(echo $VCAP_SERVICES | jq -r '[to_entries[] | select(.key | startswith("appcloud-rabbitmq")) | .value[]][0].credentials.username')
-RABBITMQ_PASSWORD=$(echo $VCAP_SERVICES | jq -r '[to_entries[] | select(.key | startswith("appcloud-rabbitmq")) | .value[]][0].credentials.password')
-RABBITMQ_HOST=$(echo $VCAP_SERVICES | jq -r '[to_entries[] | select(.key | startswith("appcloud-rabbitmq")) | .value[]][0].credentials.host')
-sed -i 's|rabbitmq_user|'$RABBITMQ_USER'|' $TELEGRAF_CONF_FILE
-sed -i 's|rabbitmq_password|'$RABBITMQ_PASSWORD'|' $TELEGRAF_CONF_FILE
-sed -i 's|rabbitmq_host|'$RABBITMQ_HOST'|' $TELEGRAF_CONF_FILE
+#We push way over allowed 5000 samples per minute for our basic observability tier, let's sacrifice rabbit mq plugin!
+#RABBITMQ_USER=$(echo $VCAP_SERVICES | jq -r '[to_entries[] | select(.key | startswith("appcloud-rabbitmq")) | .value[]][0].credentials.username')
+#RABBITMQ_PASSWORD=$(echo $VCAP_SERVICES | jq -r '[to_entries[] | select(.key | startswith("appcloud-rabbitmq")) | .value[]][0].credentials.password')
+#RABBITMQ_HOST=$(echo $VCAP_SERVICES | jq -r '[to_entries[] | select(.key | startswith("appcloud-rabbitmq")) | .value[]][0].credentials.host')
+#sed -i 's|rabbitmq_user|'$RABBITMQ_USER'|' $TELEGRAF_CONF_FILE
+#sed -i 's|rabbitmq_password|'$RABBITMQ_PASSWORD'|' $TELEGRAF_CONF_FILE
+#sed -i 's|rabbitmq_host|'$RABBITMQ_HOST'|' $TELEGRAF_CONF_FILE
 
 MYSQL_USER=$(echo $VCAP_SERVICES | jq -r '[to_entries[] | select(.key | startswith("appcloud-mariadb")) | .value[]][0].credentials.username')
 MYSQL_PASSWORD=$(echo $VCAP_SERVICES | jq -r '[to_entries[] | select(.key | startswith("appcloud-mariadb")) | .value[]][0].credentials.password')
